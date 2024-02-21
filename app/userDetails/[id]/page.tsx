@@ -24,7 +24,7 @@ export default function Id () {
             dispatch(getAllUserCartsAPI(+id))
         }
     }, [id])
-    console.log(cards); // cardsy stanum em bayc tvyalnery cuyc talus chen erevum
+    console.log(cards); 
     
     return(
         <div className="show">
@@ -36,17 +36,22 @@ export default function Id () {
                         <p>age: {user.age} gender: {user.gender} email: {user.email} </p>
                         <p>Phone: {user.phone}</p>
                         <h3>User Cards</h3>
-                        {/* <p style={{color : "red"}}>{cards.id}</p> */}
-                        {/* {cards && <p>{cards.id}</p>}
-                        <p>{cards.id}</p> */}
-                        {/* {cards.products?.map(elm => {
+                        {Array.isArray(cards) && cards.map(elm => {
                             return(
-                                <div key={elm.id}>
-                                    <p>Text</p>
-                                    <p>{elm.title}</p>
+                                <div style={{textAlign: "center"}} key={elm.id}>
+                                    <p>Total: {elm.total}</p>
+                                    <p>totalProducts: {elm.totalProducts}</p>
+                                    <p>totalQuantity: {elm.totalQuantity}</p>
+                                    {Array.isArray(elm.products) && elm.products.map(el => {
+                                        return(
+                                            <div key={el.id}>
+                                                <p>Product Title:{el.title}</p>
+                                            </div>
+                                        )
+                                    })}
                                 </div>
                             )
-                        })} */}
+                        })}
                    </div>
                 </div>
                 <form className="form" onSubmit={handleSubmit(addUs)}>
